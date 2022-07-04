@@ -13,6 +13,7 @@ const Glossaries = () => {
           key={`${glossary.id} + ${glossary.title}`}
           name={glossary.title}
           id={glossary.id}
+          meaning={glossary.definition}
         />
       ))}
     </div>

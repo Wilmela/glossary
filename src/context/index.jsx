@@ -7,6 +7,7 @@ export const GlossaryContext = createContext();
 export const GlossaryProvider = ({ children }) => {
   const [glossaries, setGlossaries] = useState([]);
   const [title, setTitle] = useState("");
+  const [definition, setDefinition] = useState("");
 
   useEffect(() => {
     const fetchGlossaries = async () => {
@@ -24,13 +25,17 @@ export const GlossaryProvider = ({ children }) => {
   const handleChange = (e) => {
     setTitle(e.target.value);
   };
+  const handleDefinitionChange = (e) => {
+    setDefinition(e.target.value);
+  };
 
   const addItem = async () => {
     const item = await fetch(`${HOST}/${URL}`, {
       method: "POST",
       body: JSON.stringify({
         id: Math.floor(Math.random() * 100),
-        title: title,
+        title,
+        definition
       }),
       headers: {
         "Content-type": "application/json",
@@ -54,7 +59,8 @@ export const GlossaryProvider = ({ children }) => {
     const item = await fetch(`${HOST}/${URL}/${id}`, {
       method: "PUT",
       body: JSON.stringify({
-        title: title,
+        title,
+        definition
       }),
       headers: {
         "Content-type": "application/json",
@@ -63,11 +69,11 @@ export const GlossaryProvider = ({ children }) => {
 
     const result = await item.json();
 
-    setGlossaries([...glossaries, {title : result.title}]);
+    setGlossaries([...glossaries, {title : result.title, definition: result.definition}]);
     window.location.reload();
   };
   return (
-    <GlossaryContext.Provider value={{ glossaries, deleteItem, addItem, updateItem, handleChange, title, setTitle, }} >
+    <GlossaryContext.Provider value={{ glossaries, deleteItem, addItem, updateItem, handleChange, handleDefinitionChange, title, setTitle, definition, setDefinition }} >
       {children}
     </GlossaryContext.Provider>
   );

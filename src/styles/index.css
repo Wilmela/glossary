@@ -28,18 +28,20 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: auto;
 }
 .container {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 3rem;
 }
 
 .glossaries-container {
   background: var(--secondary-color);
   padding: 2rem 1rem;
-  margin: 5rem 1rem 1rem 1rem;
+  margin: 5rem 1rem 0rem 1rem;
   border-radius: 0.7rem;
   border: none;
 }
@@ -55,6 +57,7 @@ nav {
   justify-content: flex-start;
   align-items: center;
   padding: 0rem 1rem;
+  margin-top: 1rem;
 }
 
 @media screen and (min-width: 786px) {
