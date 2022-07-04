@@ -10,7 +10,7 @@ const Glossaries = () => {
     <div className="glossaries-container">
       {glossaries.map((glossary) => (
         <Glossary
-          key={`${glossary.id} + ${glossaries.item}`}
+          key={`${glossary.id} + ${glossary.title}`}
           name={glossary.title}
           id={glossary.id}
         />

@@ -13,12 +13,7 @@ const Input = () => {
     setTitle("");
   };
   return (
-    <div
-    className="input-comp"
-      style={{
-        
-      }}
-    >
+    <div className="input-comp" >
       <input
         type="text"
         placeholder="Enter an item..."
