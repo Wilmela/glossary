@@ -11,7 +11,7 @@ const Glossary = ({ id, name, meaning }) => {
     setIsEditable(true);
   };
   const onSave = (id) => {
-    if (!(title && definition)) return alert("Enter title and definition");
+    if (!(title || definition)) return alert("Enter title and definition");
     updateItem(id);
     setIsEditable(false);
   };
@@ -39,10 +39,10 @@ const Glossary = ({ id, name, meaning }) => {
       >
 
         <div style={{display:'flex', flexDirection:'column', width:'70%'}}>
-          {isEditable ? ( <input type="text" onChange={handleChange} style={styles.input} /> ) :
+          {isEditable ? ( <input type="text" defaultValue={name} onChange={handleChange} style={styles.input} /> ) :
               <h3 style={{ color: "blue", }} data-aos='fade-right'>{name}</h3> 
           }
-          {isEditable ? ( <textarea type="text" onChange={handleDefinitionChange} style={{...styles.input, marginTop:'.5rem'}} /> ) :
+          {isEditable ? ( <textarea type="text" defaultValue={meaning} onChange={handleDefinitionChange} style={{...styles.input, marginTop:'.5rem'}} /> ) :
               <p style={styles.meaning}>{meaning}</p>
           }
         </div>
@@ -75,6 +75,8 @@ const styles = {
     padding: ".2rem",
     borderRadius: ".2rem",
     cursor: "text",
+    border: 'none',
+    outline:'none'
   },
   meaning: {
     fontStyle: "italic",

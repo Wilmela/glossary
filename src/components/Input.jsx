@@ -16,7 +16,7 @@ const Input = () => {
   const [postItem, setPostItem] = useState(false);
 
   const onAdd = () => {
-    if (!(title && definition)) {
+    if (!(title || definition)) {
       return alert("Enter a title and definition");
     }
     addItem();
@@ -61,6 +61,7 @@ const styles = {
     padding: "1rem",
     borderRadius: ".5rem",
     border: "none",
+    cursor:'pointer'
   },
   inputStyle: {
     padding: ".8rem",
@@ -68,6 +69,7 @@ const styles = {
     borderRadius: ".5rem",
     border: "none",
     marginRight: "1rem",
+    outline:'none'
   },
 };
 
