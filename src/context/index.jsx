@@ -35,7 +35,7 @@ export const GlossaryProvider = ({ children }) => {
       body: JSON.stringify({
         id: Math.floor(Math.random() * 100),
         title,
-        definition
+        definition,
       }),
       headers: {
         "Content-type": "application/json",
@@ -43,16 +43,13 @@ export const GlossaryProvider = ({ children }) => {
     });
     const data = await item.json();
     setGlossaries((prev) => [...prev, data]);
-
-    window.location.reload();
   };
 
   const deleteItem = async (id) => {
-    const itemId = await fetch(`${HOST}/${URL}/${id}`, {
+    await fetch(`${HOST}/${URL}/${id}`, {
       method: "DELETE",
     });
-    setGlossaries(glossaries.filter((item) => item.id != itemId));
-    window.location.reload();
+    setGlossaries(glossaries.filter((item) => item.id != id));
   };
 
   const updateItem = async (id) => {
@@ -60,7 +57,7 @@ export const GlossaryProvider = ({ children }) => {
       method: "PUT",
       body: JSON.stringify({
         title,
-        definition
+        definition,
       }),
       headers: {
         "Content-type": "application/json",
@@ -68,12 +65,30 @@ export const GlossaryProvider = ({ children }) => {
     });
 
     const result = await item.json();
-
-    setGlossaries([...glossaries, {title : result.title, definition: result.definition}]);
-    window.location.reload();
+    
+    setGlossaries(
+      glossaries.map((glossary) =>
+        glossary.id == id
+          ? { ...glossary, title: result.title, definition: result.definition }
+          : glossary
+      )
+    );
   };
   return (
-    <GlossaryContext.Provider value={{ glossaries, deleteItem, addItem, updateItem, handleChange, handleDefinitionChange, title, setTitle, definition, setDefinition }} >
+    <GlossaryContext.Provider
+      value={{
+        glossaries,
+        deleteItem,
+        addItem,
+        updateItem,
+        handleChange,
+        handleDefinitionChange,
+        title,
+        setTitle,
+        definition,
+        setDefinition,
+      }}
+    >
       {children}
     </GlossaryContext.Provider>
   );
