@@ -22,32 +22,53 @@ const Input = () => {
     addItem();
     setTitle("");
     setDefinition("");
-    setPostItem(false)
+    setPostItem(false);
   };
   return (
     <>
-    <div style={{width:'100%', display:'flex', justifyContent:'center', alignItems:'center', marginTop:'1rem'}}>
-      <button onClick={() => setPostItem(!postItem)} type="button" style={styles.btn}>{!postItem ? 'Add Glossary ': 'Cancel'}</button>
-    </div>
-
-   {postItem && (<div className="input-comp">
-      <div style={{ width: "90%", marginRight: "1rem" }}>
-        <input
-          type="text"
-          placeholder="Enter an item..."
-          style={{...styles.inputStyle, marginBottom:'1rem'}}
-          onChange={handleChange}
-        />
-        <textarea
-          type="text"
-          placeholder="Enter definition..."
-          style={styles.inputStyle}
-          onChange={handleDefinitionChange}
-        />
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "1rem",
+        }}
+      >
+        <button
+          onClick={() => setPostItem(!postItem)}
+          type="button"
+          style={styles.btn}
+        >
+          {!postItem ? "Add Glossary " : "Cancel"}
+        </button>
       </div>
 
-      <FaPlusCircle onClick={onAdd} size={35} color="green" cursor="pointer" />
-    </div>)}
+      {postItem && (
+        <div className="app__input-comp">
+          <div style={{ width: "90%", marginRight: "1rem" }}>
+            <input
+              type="text"
+              placeholder="Enter an item..."
+              style={{ ...styles.inputStyle, marginBottom: "1rem" }}
+              onChange={handleChange}
+            />
+            <textarea
+              type="text"
+              placeholder="Enter definition..."
+              style={styles.inputStyle}
+              onChange={handleDefinitionChange}
+            />
+          </div>
+
+          <FaPlusCircle
+            onClick={onAdd}
+            size={35}
+            color="green"
+            cursor="pointer"
+          />
+        </div>
+      )}
     </>
   );
 };
@@ -61,7 +82,7 @@ const styles = {
     padding: "1rem",
     borderRadius: ".5rem",
     border: "none",
-    cursor:'pointer'
+    cursor: "pointer",
   },
   inputStyle: {
     padding: ".8rem",
@@ -69,7 +90,7 @@ const styles = {
     borderRadius: ".5rem",
     border: "none",
     marginRight: "1rem",
-    outline:'none'
+    outline: "none",
   },
 };
 

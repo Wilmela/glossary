@@ -30,7 +30,7 @@ nav {
     align-items: center;
     height: auto;
 }
-.container {
+.app__container {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -38,7 +38,7 @@ nav {
   margin-bottom: 3rem;
 }
 
-.glossaries-container {
+.app__glossaries-container {
   background: var(--secondary-color);
   padding: 2rem 1rem;
   margin: 5rem 1rem 0rem 1rem;
@@ -46,12 +46,7 @@ nav {
   border: none;
 }
 
-.input {
-  padding: 1rem;
-  border: 1px solid var(--primary-color);
-  margin: 0.5rem 0rem;
-}
-.input-comp {
+.app__input-comp {
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -61,7 +56,7 @@ nav {
 }
 
 @media screen and (min-width: 786px) {
-  .container {
+  .app__container {
     width: 70%;
   }
 }

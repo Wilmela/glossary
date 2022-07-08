@@ -15,7 +15,7 @@ const App = () => {
   return (
     <div className="app">
       <Header />
-      <div className="container">
+      <div className="app__container">
         <Glossaries />
         <Input />
       </div>

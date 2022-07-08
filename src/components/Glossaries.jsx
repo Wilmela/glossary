@@ -7,7 +7,7 @@ const Glossaries = () => {
   const { glossaries } = useContext(GlossaryContext);
 
   return (
-    <div className="glossaries-container">
+    <div className="app__glossaries-container">
       {glossaries.map((glossary) => (
         <Glossary
           key={`${glossary.id} + ${glossary.title}`}
